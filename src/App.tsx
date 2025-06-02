@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
+import TrendingProducts from "./components/ProductList/TrendingProducts";
+import { Button } from "./components/ui/button";
 import {
 	Carousel,
 	CarouselContent,
 	CarouselItem,
-} from "@/components/ui/carousel";
-import { Button } from "./components/ui/button";
-import { Card, CardContent } from "./components/ui/card";
-import ProductCard from "@/components/ProductList/ProductCard";
-import ProductList from "./components/ProductList/Products";
-import TrendingProducts from "./components/ProductList/TrendingProducts";
-import Header from "./components/Header/Header";
-import { CartProvider } from "@/context/CartContext"
-import { BrowserRouter as Router, Routes, Route } from "react-router"
-import CheckoutPage from "@/pages/checkout"
+} from "./components/ui/carousel";
 
 const slides = [
 	{
@@ -67,9 +60,6 @@ const categories = [
 		link: "#shoes",
 	},
 ];
-
-
-
 
 function Slideshow() {
 	const [api, setApi] = useState<
@@ -215,8 +205,6 @@ function ShopByCategory() {
 		</div>
 	);
 }
-
-
 
 function App() {
 	return (

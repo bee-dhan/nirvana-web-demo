@@ -14,7 +14,7 @@ interface ProductColor {
 }
 
 interface Product {
-	id: number;
+	id: string;
 	name: string;
 	brand?: string;
 	description?: string;
@@ -30,25 +30,30 @@ interface Product {
 
 function ProductCard({ product }: { product: Product }) {
 	const [selectedColor, setSelectedColor] = useState(0);
-	const { addItemToCart, getItemQuantity, updateItemQuantity } = useCartActions();
+	const { addItemToCart, getItemQuantity, updateItemQuantity } =
+		useCartActions();
 	const quantity = getItemQuantity(product.id);
 
 	const currentVariant = product.colors?.[selectedColor];
 	const currentImage = currentVariant?.image || product.image;
-	const variantId = currentVariant?.variantId ? parseInt(currentVariant.variantId, 10) : product.id;
+	const variantId = currentVariant?.variantId
+		? parseInt(currentVariant.variantId, 10)
+		: product.id;
 	const productUrl = `/product/${product.id}?variant=${variantId}`;
 
 	const handleAddToCart = () => {
 		const cartItem: CartItem = {
 			id: variantId,
-			name: `${product.name}${currentVariant ? ` - ${currentVariant.name}` : ''}`,
+			name: `${product.name}${
+				currentVariant ? ` - ${currentVariant.name}` : ""
+			}`,
 			price: product.price,
 			image: currentImage,
 			quantity: 1,
 			variant: {
-				color: currentVariant?.name || '',
-				size: ''
-			}
+				color: currentVariant?.name || "",
+				size: "",
+			},
 		};
 		addItemToCart(cartItem);
 	};
@@ -59,7 +64,7 @@ function ProductCard({ product }: { product: Product }) {
 				<Link to={productUrl}>
 					<img
 						src={currentImage}
-						alt={`${product.name} - ${currentVariant?.name || ''}`}
+						alt={`${product.name} - ${currentVariant?.name || ""}`}
 						className="aspect-square rounded-lg bg-gray-200 object-cover group-hover:opacity-75 w-full"
 					/>
 				</Link>
@@ -85,9 +90,7 @@ function ProductCard({ product }: { product: Product }) {
 								size="icon"
 								variant={selectedColor === idx ? "default" : "outline"}
 								className={`border-2 ${
-									selectedColor === idx
-										? "border-blue-600"
-										: "border-gray-200"
+									selectedColor === idx ? "border-blue-600" : "border-gray-200"
 								} w-8 h-8 rounded-full flex items-center justify-center p-0`}
 								onClick={() => setSelectedColor(idx)}
 								aria-label={color.name}
@@ -135,7 +138,9 @@ function ProductCard({ product }: { product: Product }) {
 								/>
 							))}
 						</div>
-						<p className="mt-1 text-sm text-gray-500">{product.reviewCount} reviews</p>
+						<p className="mt-1 text-sm text-gray-500">
+							{product.reviewCount} reviews
+						</p>
 					</div>
 				)}
 

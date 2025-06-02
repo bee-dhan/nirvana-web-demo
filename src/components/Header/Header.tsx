@@ -1,17 +1,9 @@
-import {
-	Sheet,
-	SheetContent,
-	SheetHeader,
-	SheetTitle,
-	SheetTrigger,
-} from "@/components/ui/sheet"
-import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router";
 import Cart from "../Cart/Cart";
 
 const Header = () => {
-
-
 	return (
 		<header className="bg-white text-gray-700 p-4 flex items-center justify-between shadow-sm sticky top-0 z-50">
 			{/* Logo & Main Nav */}
@@ -49,7 +41,6 @@ const Header = () => {
 							<Link to="/collections/mens" className="hover:text-blue-600">
 								Men
 							</Link>
-							
 						</nav>
 					</SheetContent>
 				</Sheet>
@@ -62,9 +53,12 @@ const Header = () => {
 
 				{/* Desktop Navigation */}
 				<nav className="hidden lg:flex gap-6">
-					<Link to="/collections/womens" className="hover:text-blue-600">Women</Link>
-					<Link to="/collections/mens" className="hover:text-blue-600">Men</Link>
-					
+					<Link to="/collections/womens" className="hover:text-blue-600">
+						Women
+					</Link>
+					<Link to="/collections/mens" className="hover:text-blue-600">
+						Men
+					</Link>
 				</nav>
 			</div>
 
@@ -74,7 +68,7 @@ const Header = () => {
 					<Link to="/login">
 						<Button>Sign in</Button>
 					</Link>
-					<Link to = "/register">
+					<Link to="/register">
 						<Button variant="outline">Create account</Button>
 					</Link>
 				</div>
@@ -98,7 +92,6 @@ const Header = () => {
 				</Button>
 
 				{/* Cart Button with Sheet */}
-			
 
 				{/* Mobile Profile Icon */}
 				<Button size="icon" variant="ghost" className="lg:hidden">
@@ -118,7 +111,7 @@ const Header = () => {
 					</svg>
 				</Button>
 			</div>
-			<Cart/>
+			<Cart />
 		</header>
 	);
 };
